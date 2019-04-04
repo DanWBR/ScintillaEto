@@ -88,12 +88,12 @@ namespace Eto.Forms.Controls.Scintilla.GTK
             SetParameter(NativeMethods.SCI_MARKERSETBACK, NativeMethods.SC_MARKNUM_FOLDERSUB.ToIntPtr(), forecolor.ToIntPtr());
             SetParameter(NativeMethods.SCI_MARKERSETBACK, NativeMethods.SC_MARKNUM_FOLDERTAIL.ToIntPtr(), forecolor.ToIntPtr());
 
-            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_C_COMMENT.ToIntPtr(), 0x008000.ToIntPtr());
-            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_C_COMMENTLINE.ToIntPtr(), 0x008000.ToIntPtr());
-            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_C_NUMBER.ToIntPtr(), 0x808000.ToIntPtr());
-            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_C_WORD.ToIntPtr(), 0x800000.ToIntPtr());
-            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_C_STRING.ToIntPtr(), 0x800080.ToIntPtr());
-            SetParameter(NativeMethods.SCI_STYLESETBOLD, NativeMethods.SCE_C_OPERATOR.ToIntPtr(), 1.ToIntPtr());
+            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_P_COMMENTBLOCK.ToIntPtr(), 0x008000.ToIntPtr());
+            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_P_COMMENTLINE.ToIntPtr(), 0x008000.ToIntPtr());
+            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_P_NUMBER.ToIntPtr(), 0x808000.ToIntPtr());
+            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_P_WORD.ToIntPtr(), 0x800000.ToIntPtr());
+            SetParameter(NativeMethods.SCI_STYLESETFORE, NativeMethods.SCE_P_STRING.ToIntPtr(), 0x800080.ToIntPtr());
+            SetParameter(NativeMethods.SCI_STYLESETBOLD, NativeMethods.SCE_P_OPERATOR.ToIntPtr(), 1.ToIntPtr());
 
             string python2 = "and as assert break class continue def del elif else except exec finally for from global if import in" +
             " is lambda not or pass print raise return try while with yield";

@@ -19,7 +19,7 @@ namespace Eto.Forms.Controls.Scintilla.Tests
 
             WinR = "WinForms"; // WPF, WinForms, GTK
             LinuxR = "GTK"; // GTK, WinForms
-            MacR = "XammMac2"; // XamMac, WinForms, GTK
+            MacR = "XamMac2"; // XamMac, WinForms, GTK
 
             Eto.Platform platform = null;
 
@@ -53,7 +53,7 @@ namespace Eto.Forms.Controls.Scintilla.Tests
                 {
                     case "XamMac2":
                         platform = new Eto.Mac.Platform();
-                        //platform.Add<ScintillaControl.IScintillaControl>(() => new Mac.ScintillaControlHandler());
+                        platform.Add<ScintillaControl.IScintillaControl>(() => new Mac.ScintillaControlHandler());
                         break;
                 }
             }

@@ -112,6 +112,8 @@ namespace Eto.Forms.Controls.Scintilla.WinForms
 
             this.SetKeywords(0, (python2 + (" " + python3)));
 
+            this.Text = "from datetime import datetime\nnow = datetime.now()\nmm = str(now.month)\ndd = str(now.day)\nyyyy = str(now.year)\nhour = str(now.hour)\nmi = str(now.minute)\nss = str(now.second)\nprint mm +'/' + dd + '/' + yyyy ' ' + hour + ':' + mi + ':' + ss";
+
         }
 
     }
