@@ -17,11 +17,11 @@ namespace Eto.Forms.Controls.Scintilla.Mac
         {
             get
             {
-                return "";
+                return nativecontrol.String;
             }
             set
             {
-
+                nativecontrol.String = value;
             }
         }
 
