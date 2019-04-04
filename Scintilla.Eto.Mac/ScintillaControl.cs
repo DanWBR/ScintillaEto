@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScintillaEto
+namespace Scintilla.Eto.Mac
 {
-    public class Class1
+    public class ScintillaControl
     {
     }
 }
