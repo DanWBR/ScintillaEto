@@ -95,13 +95,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions.cs" />
-    <Compile Include="NativeMethods.cs" />
     <Compile Include="ScintillaControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Scintilla\libscintilla.so" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scintilla.Eto.Shared\Scintilla.Eto.Shared.csproj">

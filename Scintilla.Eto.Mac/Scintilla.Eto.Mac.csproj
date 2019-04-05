@@ -64,13 +64,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extensions.cs" />
-    <Compile Include="Keywords.cs" />
     <Compile Include="ScintillaControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ScintillaFramework\ScintillaFramework.zip" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Scintilla.Eto.Shared\Scintilla.Eto.Shared.csproj">

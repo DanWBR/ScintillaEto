@@ -2,7 +2,6 @@
 using Eto.Drawing;
 using Eto.Mac;
 using Eto.Forms.Controls.Scintilla.Shared;
-using Scintilla.Eto.Mac;
 using ScintillaBinder;
 using System;
 
@@ -152,6 +151,44 @@ namespace Eto.Forms.Controls.Scintilla.Mac
                 Console.WriteLine("ScintillaView set lexer string param");
                 nativecontrol.SetLexerProperty((string)param1, (string)param2);
             }
+        }
+
+        public void SetKeywords(int level, string keywords)
+        {
+            SetParameter(Constants.SCI_SETKEYWORDS, level, keywords);
+        }
+
+        public void SetStyle(int styleID, int item, object value)
+        {
+            if (value is Eto.Drawing.Color)
+            {
+                var color = ((Eto.Drawing.Color)value).ToNSUI();
+                SetParameter(styleID, item.ToIntPtr(), color);
+            }
+            else
+            {
+                SetParameter(styleID, item, (int)value);
+            }
+        }
+
+        public void SetFont(string fontname)
+        {
+            SetParameter(Constants.SCI_STYLESETFONT, Constants.STYLE_DEFAULT, fontname);
+        }
+
+        public void SetFontSize(int fontsize)
+        {
+            SetParameter(Constants.SCI_STYLESETSIZE, Constants.STYLE_DEFAULT, fontsize);
+        }
+
+        public void ResetDefaultStyle()
+        {
+            SetParameter(Constants.SCI_STYLERESETDEFAULT, 0, 0);
+        }
+
+        public void ClearAllStyles()
+        {
+            SetParameter(Constants.SCI_STYLECLEARALL, 0, 0);
         }
 
         public override NSView ContainerControl

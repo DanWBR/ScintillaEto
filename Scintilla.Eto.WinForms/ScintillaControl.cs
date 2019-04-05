@@ -27,6 +27,35 @@ namespace Eto.Forms.Controls.Scintilla.WinForms
             }
         }
 
+        public void SetKeywords(int level, string keywords)
+        {
+            nativecontrol.SetKeywords(level, keywords);
+        }
+
+        public void SetStyle(int styleID, int item, object value)
+        {
+            //
+        }
+
+        public void SetFont(string fontname)
+        {
+            nativecontrol.Styles[ScintillaNET.Style.Default].Font = fontname;
+        }
+
+        public void SetFontSize(int fontsize)
+        {
+            nativecontrol.Styles[ScintillaNET.Style.Default].Size = fontsize;
+        }
+
+        public void ResetDefaultStyle()
+        {
+            nativecontrol.StyleResetDefault();
+        }
+
+        public void ClearAllStyles()
+        {
+            nativecontrol.StyleClearAll();
+        }
     }
 
     public class ScintillaControl_WinForms: ScintillaNET.Scintilla
