@@ -3,7 +3,6 @@ using Eto.Drawing;
 using Gdk;
 using System;
 using System.Runtime.InteropServices;
-using Eto.Drawing;
 
 namespace Eto.Forms.Controls.Scintilla.GTK
 {
@@ -102,11 +101,7 @@ namespace Eto.Forms.Controls.Scintilla.GTK
             "f import in is lambda nonlocal not or pass raise return try while with yield";
 
             SetParameter(Constants.SCI_SETKEYWORDS, 0.ToIntPtr(), (python2 + (" " + python3)).ToIntPtr());
-
-            var txt = "from datetime import datetime\nnow = datetime.now()\nmm = str(now.month)\ndd = str(now.day)\nyyyy = str(now.year)\nhour = str(now.hour)\nmi = str(now.minute)\nss = str(now.second)\nprint mm +'/' + dd + '/' + yyyy ' ' + hour + ':' + mi + ':' + ss";
-
-            SetParameter(Constants.SCI_SETTEXT, new IntPtr(0), txt.ToIntPtr());
-
+            
             Console.WriteLine("Managed Editor Added");
 
             this.Control = nativecontrol;

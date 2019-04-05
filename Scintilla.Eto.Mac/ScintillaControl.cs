@@ -103,13 +103,7 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             "f import in is lambda nonlocal not or pass raise return try while with yield";
 
             SetParameter(Constants.SCI_SETKEYWORDS, 0, (python2 + " " + python3));
-
-            //nativecontrol.SetReferenceProperty(Constants.SCI_SETKEYWORDS, 0, (python2 + " " + python3).ToIntPtr());
-
-            var txt = "from datetime import datetime\nnow = datetime.now()\nmm = str(now.month)\ndd = str(now.day)\nyyyy = str(now.year)\nhour = str(now.hour)\nmi = str(now.minute)\nss = str(now.second)\nprint mm +'/' + dd + '/' + yyyy ' ' + hour + ':' + mi + ':' + ss";
-
-            nativecontrol.String = txt;
-
+            
             var infobar = new InfoBar();
             infobar.Bounds = new CoreGraphics.CGRect(0, 0, 400, 0);
             infobar.SetDisplay(IBDisplay.All);
