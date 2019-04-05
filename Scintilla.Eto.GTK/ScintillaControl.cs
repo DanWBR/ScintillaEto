@@ -57,7 +57,7 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
             SetParameter(Constants.SCI_SETAUTOMATICFOLD, Constants.SC_AUTOMATICFOLD_CLICK.ToIntPtr(), IntPtr.Zero);
 
-            SetParameter(Constants.SCI_SETMARGINWIDTHN, 0.ToIntPtr(), 20.ToIntPtr());
+            SetParameter(Constants.SCI_SETMARGINWIDTHN, 0.ToIntPtr(), 35.ToIntPtr());
 
             SetParameter(Constants.SCI_SETMARGINWIDTHN, 1.ToIntPtr(), 20.ToIntPtr());
             SetParameter(Constants.SCI_SETMARGINTYPEN, 1.ToIntPtr(), Constants.SC_MARGIN_SYMBOL.ToIntPtr());
@@ -70,6 +70,7 @@ namespace Eto.Forms.Controls.Scintilla.GTK
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDEREND.ToIntPtr(), Constants.SC_MARK_BOXPLUSCONNECTED.ToIntPtr());
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDERSUB.ToIntPtr(), Constants.SC_MARK_VLINE.ToIntPtr());
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDERTAIL.ToIntPtr(), Constants.SC_MARK_LCORNERCURVE.ToIntPtr());
+            SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDERMIDTAIL.ToIntPtr(), Constants.SC_MARK_TCORNER.ToIntPtr());
 
             var forecolor = Int32.Parse(SystemColors.ControlText.ToHex(false).TrimStart('#'), System.Globalization.NumberStyles.HexNumber);
             var backcolor = Int32.Parse(SystemColors.ControlBackground.ToHex(false).TrimStart('#'), System.Globalization.NumberStyles.HexNumber);
