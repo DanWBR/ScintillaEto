@@ -1,9 +1,9 @@
 # ScintillaEto
 Scintilla (Source Code Editor) Controls for Eto.Forms
 
-![](https://snag.gy/xnoMjk.jpg)
+![Scintilla editor component in DWSIM running on macOS + Xamarin.Mac (C#)](https://snag.gy/xnoMjk.jpg)
 
-![](https://snag.gy/IYWMku.jpg)
+![Scintilla editor component in DWSIM running on Ubuntu Linux + Mono 5.20 + GTK#](https://snag.gy/IYWMku.jpg)
 
 This project exposes a source code editor (Scintilla) to Eto.Forms applications as a Control.
 
