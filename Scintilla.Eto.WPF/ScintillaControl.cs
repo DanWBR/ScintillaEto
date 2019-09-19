@@ -6,7 +6,7 @@ using SystemColors = System.Drawing.SystemColors;
 using Color = System.Drawing.Color;
 using System.Windows;
 
-namespace Eto.Forms.Controls.Scintilla.WinForms
+namespace Eto.Forms.Controls.Scintilla.WPF
 {
 
     public class ScintillaControlHandler : Eto.Wpf.Forms.WpfFrameworkElement<FrameworkElement, Shared.ScintillaControl, Shared.ScintillaControl.ICallback>, Shared.ScintillaControl.IScintillaControl
