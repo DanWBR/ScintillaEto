@@ -56,6 +56,71 @@ namespace Eto.Forms.Controls.Scintilla.WinForms
         {
             nativecontrol.StyleClearAll();
         }
+
+        public void Cut()
+        {
+            nativecontrol.Cut();
+        }
+
+        public void Copy()
+        {
+            nativecontrol.Copy();
+        }
+
+        public void Paste()
+        {
+            nativecontrol.Paste();
+        }
+
+        public void Undo()
+        {
+            nativecontrol.Undo();
+        }
+
+        public void Redo()
+        {
+            nativecontrol.Redo();
+        }
+
+        public void ToggleCommenting()
+        {
+            var lines = nativecontrol.SelectedText.Split(System.Environment.NewLine.ToCharArray());
+            string newlines = "";
+            foreach (string l in lines)
+            {
+                if (l != "" && l.StartsWith("#")) newlines += l.TrimStart('#') + System.Environment.NewLine;
+                else if (l != "" && !l.StartsWith("#")) newlines += l.Insert(0, "#") + System.Environment.NewLine;
+            }
+            nativecontrol.ReplaceSelection(newlines.TrimEnd(System.Environment.NewLine.ToCharArray()));
+        }
+
+        public void Indent()
+        {
+            var lines = nativecontrol.SelectedText.Split(System.Environment.NewLine.ToCharArray());
+            string newlines = "";
+            foreach (string l in lines)
+            {
+                if (l != "") newlines += l.Insert(0, '\t'.ToString()) + System.Environment.NewLine;
+            }
+            nativecontrol.ReplaceSelection(newlines.TrimEnd(System.Environment.NewLine.ToCharArray()));
+        }
+
+        public void Unindent()
+        {
+            var lines = nativecontrol.SelectedText.Split(System.Environment.NewLine.ToCharArray());
+            string newlines = "";
+            foreach (string l in lines)
+            {
+                if (l != "") newlines += l.TrimStart('\t') + System.Environment.NewLine;
+            }
+            nativecontrol.ReplaceSelection(newlines.TrimEnd(System.Environment.NewLine.ToCharArray()));
+        }
+
+        public void InsertSnippet(string snippet)
+        {
+            nativecontrol.InsertText(nativecontrol.SelectionStart, snippet);
+        }
+
     }
 
     public class ScintillaControl_WinForms: ScintillaNET.Scintilla

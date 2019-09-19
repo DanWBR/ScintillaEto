@@ -25,6 +25,24 @@ namespace Eto.Forms.Controls.Scintilla.Shared
 
             void ClearAllStyles();
 
+            void Cut();
+
+            void Copy();
+
+            void Paste();
+
+            void Undo();
+
+            void Redo();
+
+            void ToggleCommenting();
+
+            void Indent();
+
+            void Unindent();
+
+            void InsertSnippet(string snippet);
+
         }
 
         public string ScriptText

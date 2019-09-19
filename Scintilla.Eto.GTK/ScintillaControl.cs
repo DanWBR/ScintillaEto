@@ -103,8 +103,6 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
             SetParameter(Constants.SCI_SETKEYWORDS, 0.ToIntPtr(), (python2 + (" " + python3)).ToIntPtr());
             
-            Console.WriteLine("Managed Editor Added");
-
             this.Control = nativecontrol;
         }
 
@@ -152,6 +150,82 @@ namespace Eto.Forms.Controls.Scintilla.GTK
         {
             SetParameter(Constants.SCI_STYLECLEARALL, new IntPtr(0), new IntPtr(0));
         }
+
+        public void Cut()
+        {
+            SetParameter(Constants.SCI_CUT, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void Copy()
+        {
+            SetParameter(Constants.SCI_COPY, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void Paste()
+        {
+            SetParameter(Constants.SCI_PASTE, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void Undo()
+        {
+            SetParameter(Constants.SCI_UNDO, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void Redo()
+        {
+            SetParameter(Constants.SCI_REDO, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void ToggleCommenting()
+        {
+            IntPtr text = IntPtr.Zero;
+            var position = SetParameter(Constants.SCI_GETSELTEXT, 0.ToIntPtr(), text);
+            var lines = text.ToString2().Split(System.Environment.NewLine.ToCharArray());
+            string newlines = "";
+            foreach (string l in lines)
+            {
+                if (l != "" && l.StartsWith("#")) newlines += l.TrimStart('#') + System.Environment.NewLine;
+                else if (l != "" && !l.StartsWith("#")) newlines += l.Insert(0, "#") + System.Environment.NewLine;
+            }
+            SetParameter(Constants.SCI_REPLACESEL, 0.ToIntPtr(), newlines.TrimEnd(System.Environment.NewLine.ToCharArray()).ToIntPtr());
+        }
+
+        public void Indent()
+        {
+            IntPtr text = IntPtr.Zero;
+            var position = SetParameter(Constants.SCI_GETSELTEXT, 0.ToIntPtr(), text);
+            var lines = text.ToString2().Split(System.Environment.NewLine.ToCharArray());
+            string newlines = "";
+            foreach (string l in lines)
+            {
+                if (l != "") newlines += l.Insert(0, '\t'.ToString()) + System.Environment.NewLine;
+            }
+            SetParameter(Constants.SCI_REPLACESEL, 0.ToIntPtr(), newlines.TrimEnd(System.Environment.NewLine.ToCharArray()).ToIntPtr());
+        }
+
+        public void Unindent()
+        {
+            IntPtr text = IntPtr.Zero;
+            var position = SetParameter(Constants.SCI_GETSELTEXT, 0.ToIntPtr(), text);
+            var lines = text.ToString2().Split(System.Environment.NewLine.ToCharArray());
+            string newlines = "";
+            foreach (string l in lines)
+            {
+                if (l != "") newlines += l.TrimStart('\t') + System.Environment.NewLine;
+            }
+            SetParameter(Constants.SCI_REPLACESEL, 0.ToIntPtr(), newlines.TrimEnd(System.Environment.NewLine.ToCharArray()).ToIntPtr());
+        }
+
+        public void InsertSnippet(string snippet)
+        {
+
+            var position = SetParameter(Constants.SCI_GETCURRENTPOS, 0.ToIntPtr(), 0.ToIntPtr());
+
+            SetParameter(Constants.SCI_INSERTTEXT, position, snippet.ToIntPtr());
+
+        }
+
+
     }
 
 }

@@ -27,11 +27,7 @@ namespace Eto.Forms.Controls.Scintilla.Mac
         public ScintillaControlHandler()
         {
 
-            Console.WriteLine("Creating ScintillaView...");
-
             nativecontrol = new ScintillaView();
-            
-            Console.WriteLine("ScintillaView Created!");
 
             SetParameter(Constants.SCI_STYLERESETDEFAULT, 0, 0);
 
@@ -67,14 +63,19 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDERMIDTAIL, Constants.SC_MARK_TCORNER);
 
             var forecolor = SystemColors.ControlText.ToNSUI();
-            var backcolor = SystemColors.ControlBackground.ToNSUI();
+            var backcolor = SystemColors.Control.ToNSUI();
 
             for (int n = 25; n < 32; ++n) // Markers 25..31 are reserved for folding.
             {
                 SetParameter(Constants.SCI_MARKERSETFORE, n, backcolor);
                 SetParameter(Constants.SCI_MARKERSETBACK, n, forecolor);
             }
-            
+
+            SetParameter(Constants.SCI_STYLESETBACK, 32, backcolor);  // set back-color of window
+            SetParameter(Constants.SCI_STYLESETBACK, 33, backcolor);  // set back-color of margin
+
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_DEFAULT, forecolor);
+
             SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTLINE, Color.FromArgb(0x00, 0x7F, 0x00).ToNSUI());
             SetParameter(Constants.SCI_STYLESETITALIC, Constants.SCE_P_COMMENTLINE, 1);
             SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_NUMBER, Color.FromArgb(0x00, 0x7F, 0x7F).ToNSUI());
@@ -91,7 +92,7 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_OPERATOR,  1);
             SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTBLOCK,  Color.FromArgb(0x7F, 0x7F, 0x7F).ToNSUI());
             SetParameter(Constants.SCI_STYLESETITALIC, Constants.SCE_P_COMMENTBLOCK, 1);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_STRINGEOL,  Color.FromArgb(0x00, 0x00, 0x00).ToNSUI());
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_STRINGEOL,  forecolor);
             SetParameter(Constants.SCI_STYLESETBACK, Constants.SCE_P_STRINGEOL,  Color.FromArgb(0xE0, 0xC0, 0xE0).ToNSUI());
             SetParameter(Constants.SCI_STYLESETEOLFILLED, Constants.SCE_P_STRINGEOL,  1);
             SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_WORD2,  Color.FromArgb(0x40, 0x70, 0x90).ToNSUI());
@@ -191,6 +192,75 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             {
                 return Control;
             }
+        }
+
+        public override bool Enabled { get => nativecontrol.IsEditable(); set => nativecontrol.SetEditable(value); }
+
+
+        public void Cut()
+        {
+            SetParameter(Constants.SCI_CUT, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void Copy()
+        {
+            SetParameter(Constants.SCI_COPY, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void Paste()
+        {
+            SetParameter(Constants.SCI_PASTE, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void Undo()
+        {
+            SetParameter(Constants.SCI_UNDO, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void Redo()
+        {
+            SetParameter(Constants.SCI_REDO, new IntPtr(0), new IntPtr(0));
+        }
+
+        public void ToggleCommenting()
+        {
+            var lines = nativecontrol.SelectedString().Split(System.Environment.NewLine.ToCharArray());
+            string newlines = "";
+            foreach (string l in lines)
+            {
+                if (l != "" && l.StartsWith("#")) newlines += l.TrimStart('#') + System.Environment.NewLine;
+                else if (l != "" && !l.StartsWith("#")) newlines += l.Insert(0, "#") + System.Environment.NewLine;
+            }
+            SetParameter(Constants.SCI_REPLACESEL, 0.ToIntPtr(), newlines.TrimEnd(System.Environment.NewLine.ToCharArray()).ToIntPtr());
+        }
+
+        public void Indent()
+        {
+            var lines = nativecontrol.SelectedString().Split(System.Environment.NewLine.ToCharArray());
+            string newlines = "";
+            foreach (string l in lines)
+            {
+                if (l != "") newlines += l.Insert(0, '\t'.ToString()) + System.Environment.NewLine;
+            }
+            SetParameter(Constants.SCI_REPLACESEL, 0.ToIntPtr(), newlines.TrimEnd(System.Environment.NewLine.ToCharArray()).ToIntPtr());
+        }
+
+        public void Unindent()
+        {
+            var lines = nativecontrol.SelectedString().Split(System.Environment.NewLine.ToCharArray());
+            string newlines = "";
+            foreach (string l in lines)
+            {
+                if (l != "") newlines += l.TrimStart('\t') + System.Environment.NewLine;
+            }
+            SetParameter(Constants.SCI_REPLACESEL, 0.ToIntPtr(), newlines.TrimEnd(System.Environment.NewLine.ToCharArray()).ToIntPtr());
+        }
+
+        public void InsertSnippet(string snippet)
+        {
+
+            nativecontrol.InsertText(Foundation.NSObject.FromObject(snippet));
+
         }
 
     }
