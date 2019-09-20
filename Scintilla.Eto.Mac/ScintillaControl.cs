@@ -29,74 +29,73 @@ namespace Eto.Forms.Controls.Scintilla.Mac
 
             nativecontrol = new ScintillaView();
 
+            var forecolor = SystemColors.ControlText.ToNSUI();
+            var backcolor = SystemColors.ControlBackground.ToNSUI();
+
             SetParameter(Constants.SCI_STYLERESETDEFAULT, 0, 0);
 
             SetParameter(Constants.SCI_STYLESETFONT, Constants.STYLE_DEFAULT, "Menlo");
             SetParameter(Constants.SCI_STYLESETSIZE, Constants.STYLE_DEFAULT, 12);
 
+            SetParameter(Constants.SCI_STYLESETBACK, Constants.STYLE_DEFAULT, backcolor);
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.STYLE_DEFAULT, forecolor);
+
             SetParameter(Constants.SCI_STYLECLEARALL, 0, 0);
 
             SetParameter(Constants.SCI_SETLEXER, Constants.SCLEX_PYTHON, 0);
-            
-            SetParameter(Constants.SCI_SETPROPERTY, "fold", "1");
-            SetParameter(Constants.SCI_SETPROPERTY, "fold.compact", "1");
-            SetParameter(Constants.SCI_SETPROPERTY, "fold.comment", "1");
-            SetParameter(Constants.SCI_SETPROPERTY, "fold.preprocessor", "1");
 
             SetParameter(Constants.SCI_SETAUTOMATICFOLD, Constants.SC_AUTOMATICFOLD_CLICK, 0);
 
-            SetParameter(Constants.SCI_SETMARGINWIDTHN, 0, 30);
+            SetParameter(Constants.SCI_SETMARGINWIDTHN, 0, 35);
 
-            SetParameter(Constants.SCI_SETMARGINWIDTHN, 1, 16);
+            SetParameter(Constants.SCI_SETMARGINWIDTHN, 1, 0);
 
-            SetParameter(Constants.SCI_SETMARGINWIDTHN, 2, 16);
-            SetParameter(Constants.SCI_SETMARGINTYPEN, 2, Constants.SC_MARGIN_SYMBOL);
+            SetParameter(Constants.SCI_SETMARGINWIDTHN, 2, 20);
+            //SetParameter(Constants.SCI_SETMARGINTYPEN, 2, Constants.SC_MARGIN_SYMBOL);
             SetParameter(Constants.SCI_SETMARGINMASKN, 2, Constants.SC_MASK_FOLDERS);
             SetParameter(Constants.SCI_SETMARGINSENSITIVEN, 2, 1);
+
+            
+            SetParameter(Constants.SCI_SETPROPERTY, "tab.timmy.whinge.level", "1");
+            SetParameter(Constants.SCI_SETPROPERTY, "fold", "1");
 
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDER, Constants.SC_MARK_BOXPLUS);
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDEROPEN, Constants.SC_MARK_BOXMINUS);
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDEROPENMID, Constants.SC_MARK_BOXMINUSCONNECTED);
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDEREND, Constants.SC_MARK_BOXPLUSCONNECTED);
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDERSUB, Constants.SC_MARK_VLINE);
-            SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDERTAIL, Constants.SC_MARK_LCORNER);
+            SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDERTAIL, Constants.SC_MARK_LCORNERCURVE);
             SetParameter(Constants.SCI_MARKERDEFINE, Constants.SC_MARKNUM_FOLDERMIDTAIL, Constants.SC_MARK_TCORNER);
 
-            var forecolor = SystemColors.ControlText.ToNSUI();
-            var backcolor = SystemColors.Control.ToNSUI();
+            SetParameter(Constants.SCI_MARKERSETFORE, Constants.SC_MARKNUM_FOLDER, backcolor);
+            SetParameter(Constants.SCI_MARKERSETFORE, Constants.SC_MARKNUM_FOLDEROPEN, backcolor);
+            SetParameter(Constants.SCI_MARKERSETFORE, Constants.SC_MARKNUM_FOLDEROPENMID, backcolor);
+            SetParameter(Constants.SCI_MARKERSETFORE, Constants.SC_MARKNUM_FOLDEREND, backcolor);
+            SetParameter(Constants.SCI_MARKERSETFORE, Constants.SC_MARKNUM_FOLDERSUB, backcolor);
+            SetParameter(Constants.SCI_MARKERSETFORE, Constants.SC_MARKNUM_FOLDERTAIL, backcolor);
 
-            for (int n = 25; n < 32; ++n) // Markers 25..31 are reserved for folding.
-            {
-                SetParameter(Constants.SCI_MARKERSETFORE, n, backcolor);
-                SetParameter(Constants.SCI_MARKERSETBACK, n, forecolor);
-            }
+            SetParameter(Constants.SCI_MARKERSETBACK, Constants.SC_MARKNUM_FOLDER, forecolor);
+            SetParameter(Constants.SCI_MARKERSETBACK, Constants.SC_MARKNUM_FOLDEROPEN, forecolor);
+            SetParameter(Constants.SCI_MARKERSETBACK, Constants.SC_MARKNUM_FOLDEROPENMID, forecolor);
+            SetParameter(Constants.SCI_MARKERSETBACK, Constants.SC_MARKNUM_FOLDEREND, forecolor);
+            SetParameter(Constants.SCI_MARKERSETBACK, Constants.SC_MARKNUM_FOLDERSUB, forecolor);
+            SetParameter(Constants.SCI_MARKERSETBACK, Constants.SC_MARKNUM_FOLDERTAIL, forecolor);
 
-            SetParameter(Constants.SCI_STYLESETBACK, 32, backcolor);  // set back-color of window
-            SetParameter(Constants.SCI_STYLESETBACK, 33, backcolor);  // set back-color of margin
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTBLOCK, NSColor.SystemGreenColor);
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTLINE, NSColor.SystemGreenColor);
+            SetParameter(Constants.SCI_STYLESETITALIC, Constants.SCE_P_COMMENTBLOCK, true);
+            SetParameter(Constants.SCI_STYLESETITALIC, Constants.SCE_P_COMMENTLINE, true);
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_NUMBER, forecolor);
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_WORD, NSColor.SystemBlueColor);
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_WORD2, NSColor.SystemYellowColor);
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_STRING, NSColor.SystemPinkColor);
+            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_OPERATOR, 1);
 
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_DEFAULT, forecolor);
+            SetParameter(Constants.SCI_STYLESETBACK, Constants.STYLE_LINENUMBER, backcolor);
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.STYLE_LINENUMBER, forecolor);
 
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTLINE, Color.FromArgb(0x00, 0x7F, 0x00).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETITALIC, Constants.SCE_P_COMMENTLINE, 1);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_NUMBER, Color.FromArgb(0x00, 0x7F, 0x7F).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_STRING, Color.FromArgb(0x7F, 0x00, 0x7F).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_CHARACTER, Color.FromArgb(0x7F, 0x00, 0x7F).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_WORD, Color.FromArgb(0x00, 0x00, 0x7F).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_WORD, 1);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_TRIPLEDOUBLE, Color.FromArgb(0x7F, 0x00, 0x00).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_TRIPLEDOUBLE, Color.FromArgb(0x7F, 0x00, 0x00).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_CLASSNAME,  Color.FromArgb(0x00, 0x00, 0xFF).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_CLASSNAME, 1);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_DEFNAME,  Color.FromArgb(0x00, 0x7F, 0x7F).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_DEFNAME,  1);
-            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_OPERATOR,  1);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTBLOCK,  Color.FromArgb(0x7F, 0x7F, 0x7F).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETITALIC, Constants.SCE_P_COMMENTBLOCK, 1);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_STRINGEOL,  forecolor);
-            SetParameter(Constants.SCI_STYLESETBACK, Constants.SCE_P_STRINGEOL,  Color.FromArgb(0xE0, 0xC0, 0xE0).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETEOLFILLED, Constants.SCE_P_STRINGEOL,  1);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_WORD2,  Color.FromArgb(0x40, 0x70, 0x90).ToNSUI());
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_DECORATOR, Color.FromArgb(0x80, 0x50, 0x00).ToNSUI());
+            SetParameter(Constants.SCI_SETFOLDMARGINCOLOUR, "1", backcolor);
+            SetParameter(Constants.SCI_SETFOLDMARGINHICOLOUR, "1", backcolor);
 
             string python2 = "and as assert break class continue def del elif else except exec finally for from global if import in" +
             " is lambda not or pass print raise return try while with yield";
@@ -104,7 +103,7 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             "f import in is lambda nonlocal not or pass raise return try while with yield";
 
             SetParameter(Constants.SCI_SETKEYWORDS, 0, (python2 + " " + python3));
-            
+
             var infobar = new InfoBar();
             infobar.Bounds = new CoreGraphics.CGRect(0, 0, 400, 0);
             infobar.SetDisplay(IBDisplay.All);
@@ -125,6 +124,11 @@ namespace Eto.Forms.Controls.Scintilla.Mac
                     Console.WriteLine("ScintillaView set int param");
                     nativecontrol.SetGeneralProperty(message, (int)param1, (int)param2);
                 }
+                else if (param2 is bool)
+                {
+                    Console.WriteLine("ScintillaView set bool param");
+                    nativecontrol.SetGeneralProperty(message, (int)param1, (bool)param2 == true ? 1 : 0);
+                }
                 else if (param2 is uint)
                 {
                     Console.WriteLine("ScintillaView set uint param");
@@ -143,8 +147,16 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             }
             else if (param1 is string)
             {
-                Console.WriteLine("ScintillaView set lexer string param");
-                nativecontrol.SetLexerProperty((string)param1, (string)param2);
+                if (param2 is string)
+                {
+                    Console.WriteLine("ScintillaView set lexer string param");
+                    nativecontrol.SetLexerProperty((string)param1, (string)param2);
+                }
+                else if (param2 is NSColor)
+                {
+                    Console.WriteLine("ScintillaView set NSColor param");
+                    nativecontrol.SetColorProperty(message, int.Parse((string)param1), (NSColor)param2);
+                }
             }
         }
 
