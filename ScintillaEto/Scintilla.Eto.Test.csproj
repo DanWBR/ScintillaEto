@@ -90,6 +90,10 @@
       <Project>{390f97fb-67fe-4114-b25a-f80258d8d4dd}</Project>
       <Name>Scintilla.Eto.WinForms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Scintilla.Eto.WPF\Scintilla.Eto.WPF.csproj">
+      <Project>{9d81f056-d671-4d28-98af-a31f9442b1f8}</Project>
+      <Name>Scintilla.Eto.WPF</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

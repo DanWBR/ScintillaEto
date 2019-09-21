@@ -43,6 +43,8 @@ namespace Eto.Forms.Controls.Scintilla.Shared
 
             void InsertSnippet(string snippet);
 
+            void Print();
+
         }
 
         public string ScriptText
@@ -85,6 +87,56 @@ namespace Eto.Forms.Controls.Scintilla.Shared
         public void ClearAllStyles()
         {
             Handler.ClearAllStyles();
+        }
+
+        public void Cut()
+        {
+            Handler.Cut();
+        }
+
+        public void Copy()
+        {
+            Handler.Copy();
+        }
+
+        public void Paste()
+        {
+            Handler.Paste();
+        }
+
+        public void Undo()
+        {
+            Handler.Undo();
+        }
+
+        public void Redo()
+        {
+            Handler.Redo();
+        }
+
+        public void ToggleCommenting()
+        {
+            Handler.ToggleCommenting();
+        }
+
+        public void Indent()
+        {
+            Handler.Indent();
+        }
+
+        public void Unindent()
+        {
+            Handler.Unindent();
+        }
+
+        public void InsertSnippet(string snippet)
+        {
+            Handler.InsertSnippet(snippet);
+        }
+
+        public void Print()
+        {
+            Handler.Print();
         }
 
     }

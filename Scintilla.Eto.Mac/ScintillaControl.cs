@@ -51,10 +51,8 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             SetParameter(Constants.SCI_SETMARGINWIDTHN, 1, 0);
 
             SetParameter(Constants.SCI_SETMARGINWIDTHN, 2, 20);
-            //SetParameter(Constants.SCI_SETMARGINTYPEN, 2, Constants.SC_MARGIN_SYMBOL);
             SetParameter(Constants.SCI_SETMARGINMASKN, 2, Constants.SC_MASK_FOLDERS);
             SetParameter(Constants.SCI_SETMARGINSENSITIVEN, 2, 1);
-
             
             SetParameter(Constants.SCI_SETPROPERTY, "tab.timmy.whinge.level", "1");
             SetParameter(Constants.SCI_SETPROPERTY, "fold", "1");
@@ -81,15 +79,36 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             SetParameter(Constants.SCI_MARKERSETBACK, Constants.SC_MARKNUM_FOLDERSUB, forecolor);
             SetParameter(Constants.SCI_MARKERSETBACK, Constants.SC_MARKNUM_FOLDERTAIL, forecolor);
 
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTBLOCK, NSColor.SystemGreenColor);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTLINE, NSColor.SystemGreenColor);
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTBLOCK, Colors.DarkGreen.ToNSUI());
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_COMMENTLINE, Colors.DarkGreen.ToNSUI());
+
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_STRINGEOL, Color.FromArgb(0, 0, 0).ToNSUI());
+            SetParameter(Constants.SCI_STYLESETBACK, Constants.SCE_P_STRINGEOL, Color.FromArgb(224, 192, 224).ToNSUI());
+
+            SetParameter(Constants.SCI_STYLESETEOLFILLED, Constants.SCE_P_STRINGEOL, true);
+
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_TRIPLE, Colors.DarkGreen.ToNSUI());
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_TRIPLEDOUBLE, Colors.DarkGreen.ToNSUI());
+
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_NUMBER, Colors.DarkOrange.ToNSUI());
+            SetParameter(Constants.SCI_STYLESETITALIC, Constants.SCE_P_COMMENTLINE, true);
+
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_STRING, Colors.DeepPink.ToNSUI());
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_CHARACTER, Colors.DeepPink.ToNSUI());
+
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_WORD, Colors.SteelBlue.ToNSUI());
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_WORD2, Colors.Salmon.ToNSUI());
+
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_CLASSNAME, NSColor.Brown);
+            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_DEFNAME, Colors.Chocolate.ToNSUI());
+
             SetParameter(Constants.SCI_STYLESETITALIC, Constants.SCE_P_COMMENTBLOCK, true);
             SetParameter(Constants.SCI_STYLESETITALIC, Constants.SCE_P_COMMENTLINE, true);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_NUMBER, forecolor);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_WORD, NSColor.SystemBlueColor);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_WORD2, NSColor.SystemYellowColor);
-            SetParameter(Constants.SCI_STYLESETFORE, Constants.SCE_P_STRING, NSColor.SystemPinkColor);
-            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_OPERATOR, 1);
+
+            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_CLASSNAME, true);
+            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_DEFNAME, true);
+            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_OPERATOR, true);
+            SetParameter(Constants.SCI_STYLESETBOLD, Constants.SCE_P_WORD2, true);
 
             SetParameter(Constants.SCI_STYLESETBACK, Constants.STYLE_LINENUMBER, backcolor);
             SetParameter(Constants.SCI_STYLESETFORE, Constants.STYLE_LINENUMBER, forecolor);
@@ -274,6 +293,9 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             nativecontrol.InsertText(Foundation.NSObject.FromObject(snippet));
 
         }
+
+        public void Print()
+        { }
 
     }
 

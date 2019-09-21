@@ -225,6 +225,10 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
         }
 
+        public void Print()
+        {
+
+        }
 
     }
 

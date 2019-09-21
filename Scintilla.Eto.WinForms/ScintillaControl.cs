@@ -121,6 +121,10 @@ namespace Eto.Forms.Controls.Scintilla.WinForms
             nativecontrol.InsertText(nativecontrol.SelectionStart, snippet);
         }
 
+        public void Print()
+        { }
+
+
     }
 
     public class ScintillaControl_WinForms: ScintillaNET.Scintilla
@@ -207,6 +211,8 @@ namespace Eto.Forms.Controls.Scintilla.WinForms
             this.SetKeywords(0, (python2 + (" " + python3)));
             
         }
+
+
 
     }
 }

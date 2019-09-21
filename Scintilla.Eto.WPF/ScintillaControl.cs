@@ -127,6 +127,10 @@ namespace Eto.Forms.Controls.Scintilla.WPF
             nativecontrol.WinFormsControl.InsertText(nativecontrol.WinFormsControl.SelectionStart, snippet);
         }
 
+        public void Print()
+        { }
+
+
     }
 
     public class ScintillaControl_WPF : System.Windows.Controls.Grid
@@ -136,6 +140,7 @@ namespace Eto.Forms.Controls.Scintilla.WPF
 
         public ScintillaControl_WPF() : base()
         {
+            WinFormsControl = new ScintillaNET.Scintilla();
             SetStyle();
             this.Loaded += Window_Loaded;
         }
