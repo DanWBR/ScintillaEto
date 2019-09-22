@@ -19,6 +19,8 @@ namespace Eto.Forms.Controls.Scintilla.GTK
         IntPtr editor;
         Gtk.Widget nativecontrol;
 
+        private int fontsize = 10;
+
         public string ScriptText
         {
             get
@@ -46,7 +48,7 @@ namespace Eto.Forms.Controls.Scintilla.GTK
             SetParameter(Constants.SCI_STYLERESETDEFAULT, new IntPtr(0), new IntPtr(0));
 
             SetParameter(Constants.SCI_STYLESETFONT, Constants.STYLE_DEFAULT.ToIntPtr(), "DejaVu Sans Mono".ToIntPtr());
-            SetParameter(Constants.SCI_STYLESETSIZE, Constants.STYLE_DEFAULT.ToIntPtr(), 10.ToIntPtr());
+            SetParameter(Constants.SCI_STYLESETSIZE, Constants.STYLE_DEFAULT.ToIntPtr(), fontsize.ToIntPtr());
 
             SetParameter(Constants.SCI_STYLECLEARALL, new IntPtr(0), new IntPtr(0));
 
@@ -227,7 +229,19 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
         public void Print()
         {
+            MessageBox.Show("Function not yet implemented.", "Error", MessageBoxButtons.OK);
+        }
 
+        public void IncreaseFontSize()
+        {
+            fontsize += 1;
+            SetParameter(Constants.SCI_STYLESETSIZE, Constants.SCE_P_DEFAULT.ToIntPtr(), fontsize.ToIntPtr());
+        }
+
+        public void DecreaseFontSize()
+        {
+            fontsize -= 1;
+            SetParameter(Constants.SCI_STYLESETSIZE, Constants.SCE_P_DEFAULT.ToIntPtr(), fontsize.ToIntPtr());
         }
 
     }

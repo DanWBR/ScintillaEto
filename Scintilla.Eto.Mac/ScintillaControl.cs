@@ -12,6 +12,8 @@ namespace Eto.Forms.Controls.Scintilla.Mac
 
         ScintillaBinder.ScintillaView nativecontrol;
 
+        private int fontsize = 12;
+
         public string ScriptText
         {
             get
@@ -29,13 +31,28 @@ namespace Eto.Forms.Controls.Scintilla.Mac
 
             nativecontrol = new ScintillaView();
 
+            SetStyle();
+
+            var infobar = new InfoBar();
+            infobar.Bounds = new CoreGraphics.CGRect(0, 0, 400, 0);
+            infobar.SetDisplay(IBDisplay.All);
+
+            nativecontrol.SetInfoBar(infobar, false);
+
+            this.Control = nativecontrol;
+
+        }
+
+        public void SetStyle()
+        {
+
             var forecolor = SystemColors.ControlText.ToNSUI();
             var backcolor = SystemColors.ControlBackground.ToNSUI();
 
             SetParameter(Constants.SCI_STYLERESETDEFAULT, 0, 0);
 
             SetParameter(Constants.SCI_STYLESETFONT, Constants.STYLE_DEFAULT, "Menlo");
-            SetParameter(Constants.SCI_STYLESETSIZE, Constants.STYLE_DEFAULT, 12);
+            SetParameter(Constants.SCI_STYLESETSIZE, Constants.STYLE_DEFAULT, fontsize);
 
             SetParameter(Constants.SCI_STYLESETBACK, Constants.STYLE_DEFAULT, backcolor);
             SetParameter(Constants.SCI_STYLESETFORE, Constants.STYLE_DEFAULT, forecolor);
@@ -53,7 +70,7 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             SetParameter(Constants.SCI_SETMARGINWIDTHN, 2, 20);
             SetParameter(Constants.SCI_SETMARGINMASKN, 2, Constants.SC_MASK_FOLDERS);
             SetParameter(Constants.SCI_SETMARGINSENSITIVEN, 2, 1);
-            
+
             SetParameter(Constants.SCI_SETPROPERTY, "tab.timmy.whinge.level", "1");
             SetParameter(Constants.SCI_SETPROPERTY, "fold", "1");
 
@@ -122,14 +139,6 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             "f import in is lambda nonlocal not or pass raise return try while with yield";
 
             SetParameter(Constants.SCI_SETKEYWORDS, 0, (python2 + " " + python3));
-
-            var infobar = new InfoBar();
-            infobar.Bounds = new CoreGraphics.CGRect(0, 0, 400, 0);
-            infobar.SetDisplay(IBDisplay.All);
-
-            nativecontrol.SetInfoBar(infobar, false);
-
-            this.Control = nativecontrol;
 
         }
 
@@ -230,27 +239,27 @@ namespace Eto.Forms.Controls.Scintilla.Mac
 
         public void Cut()
         {
-            SetParameter(Constants.SCI_CUT, new IntPtr(0), new IntPtr(0));
+            SetParameter(Constants.SCI_CUT, 0, 0);
         }
 
         public void Copy()
         {
-            SetParameter(Constants.SCI_COPY, new IntPtr(0), new IntPtr(0));
+            SetParameter(Constants.SCI_COPY, 0, 0);
         }
 
         public void Paste()
         {
-            SetParameter(Constants.SCI_PASTE, new IntPtr(0), new IntPtr(0));
+            SetParameter(Constants.SCI_PASTE, 0, 0);
         }
 
         public void Undo()
         {
-            SetParameter(Constants.SCI_UNDO, new IntPtr(0), new IntPtr(0));
+            SetParameter(Constants.SCI_UNDO, 0, 0);
         }
 
         public void Redo()
         {
-            SetParameter(Constants.SCI_REDO, new IntPtr(0), new IntPtr(0));
+            SetParameter(Constants.SCI_REDO, 0, 0);
         }
 
         public void ToggleCommenting()
@@ -259,10 +268,13 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             string newlines = "";
             foreach (string l in lines)
             {
-                if (l != "" && l.StartsWith("#")) newlines += l.TrimStart('#') + System.Environment.NewLine;
-                else if (l != "" && !l.StartsWith("#")) newlines += l.Insert(0, "#") + System.Environment.NewLine;
+                if (l != "")
+                {
+                    if (l.StartsWith("#")) { newlines += l.TrimStart('#') + System.Environment.NewLine; }
+                    else { newlines += l.Insert(0, "#") + System.Environment.NewLine; }
+                }
             }
-            SetParameter(Constants.SCI_REPLACESEL, 0.ToIntPtr(), newlines.TrimEnd(System.Environment.NewLine.ToCharArray()).ToIntPtr());
+            SetParameter(Constants.SCI_REPLACESEL, 0, newlines.TrimEnd(System.Environment.NewLine.ToCharArray()));
         }
 
         public void Indent()
@@ -273,7 +285,7 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             {
                 if (l != "") newlines += l.Insert(0, '\t'.ToString()) + System.Environment.NewLine;
             }
-            SetParameter(Constants.SCI_REPLACESEL, 0.ToIntPtr(), newlines.TrimEnd(System.Environment.NewLine.ToCharArray()).ToIntPtr());
+            SetParameter(Constants.SCI_REPLACESEL, 0, newlines.TrimEnd(System.Environment.NewLine.ToCharArray()));
         }
 
         public void Unindent()
@@ -284,7 +296,7 @@ namespace Eto.Forms.Controls.Scintilla.Mac
             {
                 if (l != "") newlines += l.TrimStart('\t') + System.Environment.NewLine;
             }
-            SetParameter(Constants.SCI_REPLACESEL, 0.ToIntPtr(), newlines.TrimEnd(System.Environment.NewLine.ToCharArray()).ToIntPtr());
+            SetParameter(Constants.SCI_REPLACESEL, 0, newlines.TrimEnd(System.Environment.NewLine.ToCharArray()));
         }
 
         public void InsertSnippet(string snippet)
@@ -295,7 +307,21 @@ namespace Eto.Forms.Controls.Scintilla.Mac
         }
 
         public void Print()
-        { }
+        {
+            nativecontrol.Print(nativecontrol);
+        }
+
+        public void IncreaseFontSize()
+        {
+            fontsize += 1;
+            SetStyle();
+        }
+
+        public void DecreaseFontSize()
+        {
+            fontsize -= 1;
+            SetStyle();
+        }
 
     }
 

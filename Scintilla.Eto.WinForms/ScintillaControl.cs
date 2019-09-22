@@ -122,8 +122,23 @@ namespace Eto.Forms.Controls.Scintilla.WinForms
         }
 
         public void Print()
-        { }
+        {
+            ScintillaPrinting.Printing printer = new ScintillaPrinting.Printing(nativecontrol);
 
+            printer.PageSettings = new ScintillaPrinting.PageSettings() { ColorMode = ScintillaPrinting.PageSettings.PrintColorMode.BlackOnWhite };
+
+            printer.PrintPreview();
+        }
+
+        public void IncreaseFontSize()
+        {
+            nativecontrol.Styles[ScintillaNET.Style.Default].Size += 1;
+        }
+
+        public void DecreaseFontSize()
+        {
+            nativecontrol.Styles[ScintillaNET.Style.Default].Size -= 1;
+        }
 
     }
 

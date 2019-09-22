@@ -45,6 +45,10 @@ namespace Eto.Forms.Controls.Scintilla.Shared
 
             void Print();
 
+            void IncreaseFontSize();
+
+            void DecreaseFontSize();
+
         }
 
         public string ScriptText
@@ -137,6 +141,16 @@ namespace Eto.Forms.Controls.Scintilla.Shared
         public void Print()
         {
             Handler.Print();
+        }
+
+        public void DecreaseFontSize()
+        {
+            Handler.DecreaseFontSize();
+        }
+
+        public void IncreaseFontSize()
+        {
+            Handler.IncreaseFontSize();
         }
 
     }
