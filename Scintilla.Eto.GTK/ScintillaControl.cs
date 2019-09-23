@@ -225,6 +225,13 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
             SetParameter(Constants.SCI_INSERTTEXT, position, snippet.ToIntPtr());
 
+            SetParameter(Constants.SCI_SETCURRENTPOS, new IntPtr(position.ToInt32() + snippet.Length + 1), 0.ToIntPtr());
+
+            position = SetParameter(Constants.SCI_GETCURRENTPOS, 0.ToIntPtr(), 0.ToIntPtr());
+
+            SetParameter(Constants.SCI_SETSELECTIONSTART, position, 0.ToIntPtr());
+            SetParameter(Constants.SCI_SETSELECTIONEND, position, 0.ToIntPtr());
+
         }
 
         public void Print()

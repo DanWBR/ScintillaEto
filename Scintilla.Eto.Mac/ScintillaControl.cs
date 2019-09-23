@@ -304,6 +304,15 @@ namespace Eto.Forms.Controls.Scintilla.Mac
 
             nativecontrol.InsertText(Foundation.NSObject.FromObject(snippet));
 
+            var position = nativecontrol.GetGeneralProperty(Constants.SCI_GETCURRENTPOS);
+
+            nativecontrol.SetGeneralProperty(Constants.SCI_SETCURRENTPOS, position + snippet.Length + 1);
+
+            position = nativecontrol.GetGeneralProperty(Constants.SCI_GETCURRENTPOS);
+
+            nativecontrol.SetGeneralProperty(Constants.SCI_SETSELECTIONSTART, position);
+            nativecontrol.SetGeneralProperty(Constants.SCI_SETSELECTIONEND, position);
+
         }
 
         public void Print()

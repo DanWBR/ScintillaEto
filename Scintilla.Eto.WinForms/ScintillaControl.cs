@@ -119,6 +119,9 @@ namespace Eto.Forms.Controls.Scintilla.WinForms
         public void InsertSnippet(string snippet)
         {
             nativecontrol.InsertText(nativecontrol.SelectionStart, snippet);
+            nativecontrol.CurrentPosition += snippet.Length + 1;
+            nativecontrol.SelectionStart = nativecontrol.CurrentPosition;
+            nativecontrol.SelectionEnd = nativecontrol.CurrentPosition;
         }
 
         public void Print()
@@ -132,12 +135,12 @@ namespace Eto.Forms.Controls.Scintilla.WinForms
 
         public void IncreaseFontSize()
         {
-            nativecontrol.Styles[ScintillaNET.Style.Default].Size += 1;
+            nativecontrol.Styles[ScintillaNET.Style.Python.Default].Size += 1;
         }
 
         public void DecreaseFontSize()
         {
-            nativecontrol.Styles[ScintillaNET.Style.Default].Size -= 1;
+            nativecontrol.Styles[ScintillaNET.Style.Python.Default].Size -= 1;
         }
 
     }
