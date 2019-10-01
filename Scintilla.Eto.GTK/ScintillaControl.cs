@@ -25,11 +25,14 @@ namespace Eto.Forms.Controls.Scintilla.GTK
         {
             get
             {
-                var sp = SetParameter(Constants.SCI_GETTEXT, 0.ToIntPtr(), 0.ToIntPtr());
-                return sp.ToString2();
+                var length = SetParameter(Constants.SCI_GETLENGTH, 0.ToIntPtr(), 0.ToIntPtr());
+                IntPtr text = new string('*', length.ToInt32() + 10).ToIntPtr();
+                SetParameter(Constants.SCI_GETTEXT, (length.ToInt32() + 10).ToIntPtr(), text);
+                return text.ToString2();
             }
             set
             {
+                Console.WriteLine("Scintilla GTK Set Text");
                 SetParameter(Constants.SCI_SETTEXT, 0.ToIntPtr(), value.ToIntPtr());
             }
         }
@@ -44,6 +47,14 @@ namespace Eto.Forms.Controls.Scintilla.GTK
             nativecontrol = new Gtk.Widget(editor);
 
             Console.WriteLine("Managed Editor Created " + nativecontrol.Name);
+
+            SetStyle();
+
+            this.Control = nativecontrol;
+        }
+
+        private void SetStyle()
+        {
 
             SetParameter(Constants.SCI_STYLERESETDEFAULT, new IntPtr(0), new IntPtr(0));
 
@@ -104,8 +115,7 @@ namespace Eto.Forms.Controls.Scintilla.GTK
             "f import in is lambda nonlocal not or pass raise return try while with yield";
 
             SetParameter(Constants.SCI_SETKEYWORDS, 0.ToIntPtr(), (python2 + (" " + python3)).ToIntPtr());
-            
-            this.Control = nativecontrol;
+
         }
 
         public IntPtr SetParameter(int message, IntPtr param1, IntPtr param2)
@@ -140,7 +150,8 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
         public void SetFontSize(int fontsize)
         {
-            SetParameter(Constants.SCI_STYLESETSIZE, Constants.STYLE_DEFAULT.ToIntPtr(), fontsize.ToIntPtr());
+            this.fontsize = fontsize;
+            SetStyle();
         }
 
         public void ResetDefaultStyle()
@@ -180,8 +191,9 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
         public void ToggleCommenting()
         {
-            IntPtr text = IntPtr.Zero;
-            var position = SetParameter(Constants.SCI_GETSELTEXT, 0.ToIntPtr(), text);
+            var length = SetParameter(Constants.SCI_GETLENGTH, 0.ToIntPtr(), 0.ToIntPtr());
+            IntPtr text = new string('*', length.ToInt32() + 10).ToIntPtr();
+            SetParameter(Constants.SCI_GETSELTEXT, 0.ToIntPtr(), text);
             var lines = text.ToString2().Split(System.Environment.NewLine.ToCharArray());
             string newlines = "";
             foreach (string l in lines)
@@ -194,8 +206,9 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
         public void Indent()
         {
-            IntPtr text = IntPtr.Zero;
-            var position = SetParameter(Constants.SCI_GETSELTEXT, 0.ToIntPtr(), text);
+            var length = SetParameter(Constants.SCI_GETLENGTH, 0.ToIntPtr(), 0.ToIntPtr());
+            IntPtr text = new string('*', length.ToInt32() + 10).ToIntPtr();
+            SetParameter(Constants.SCI_GETSELTEXT, 0.ToIntPtr(), text);
             var lines = text.ToString2().Split(System.Environment.NewLine.ToCharArray());
             string newlines = "";
             foreach (string l in lines)
@@ -207,8 +220,9 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
         public void Unindent()
         {
-            IntPtr text = IntPtr.Zero;
-            var position = SetParameter(Constants.SCI_GETSELTEXT, 0.ToIntPtr(), text);
+            var length = SetParameter(Constants.SCI_GETLENGTH, 0.ToIntPtr(), 0.ToIntPtr());
+            IntPtr text = new string('*', length.ToInt32() + 10).ToIntPtr();
+            SetParameter(Constants.SCI_GETSELTEXT, 0.ToIntPtr(), text);
             var lines = text.ToString2().Split(System.Environment.NewLine.ToCharArray());
             string newlines = "";
             foreach (string l in lines)
@@ -242,13 +256,13 @@ namespace Eto.Forms.Controls.Scintilla.GTK
         public void IncreaseFontSize()
         {
             fontsize += 1;
-            SetParameter(Constants.SCI_STYLESETSIZE, Constants.SCE_P_DEFAULT.ToIntPtr(), fontsize.ToIntPtr());
+            SetStyle();
         }
 
         public void DecreaseFontSize()
         {
             fontsize -= 1;
-            SetParameter(Constants.SCI_STYLESETSIZE, Constants.SCE_P_DEFAULT.ToIntPtr(), fontsize.ToIntPtr());
+            SetStyle();
         }
 
     }
