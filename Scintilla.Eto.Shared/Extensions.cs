@@ -20,12 +20,12 @@ namespace Eto.Forms.Controls.Scintilla.Shared
 
         public static IntPtr ToIntPtr(this string value)
         {
-            return System.Runtime.InteropServices.Marshal.StringToHGlobalAuto(value);
+            return System.Runtime.InteropServices.Marshal.StringToHGlobalAnsi(value);
         }
 
         public static string ToString2(this IntPtr value)
         {
-            return System.Runtime.InteropServices.Marshal.PtrToStringAuto(value);
+            return System.Runtime.InteropServices.Marshal.PtrToStringAnsi(value);
         }
 
     }
