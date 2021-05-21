@@ -34,29 +34,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Eto, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Eto.Forms.2.5.11\lib\netstandard2.0\Eto.dll</HintPath>
+    <Reference Include="Eto">
+      <HintPath>..\packages\Eto.Forms.2.4.1\lib\netstandard1.0\Eto.dll</HintPath>
     </Reference>
-    <Reference Include="Eto.WinForms, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Eto.Platform.Windows.2.5.11\lib\net45\Eto.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Windows7APICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Windows7APICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    <Reference Include="Eto.WinForms">
+      <HintPath>..\packages\Eto.Platform.Windows.2.4.1\lib\net45\Eto.WinForms.dll</HintPath>
     </Reference>
     <Reference Include="ScintillaNET, Version=3.6.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\jacobslusser.ScintillaNET.3.6.3\lib\net40\ScintillaNET.dll</HintPath>
     </Reference>
-    <Reference Include="ScintillaNetPrinting, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ScintillaNetPrinting.1.0.1\lib\net40\ScintillaNetPrinting.dll</HintPath>
+    <Reference Include="ScintillaNetPrinting, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ScintillaNetPrinting.1.0.0.1\lib\net40\ScintillaNetPrinting.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -78,7 +68,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,7 +83,5 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Eto.Forms.2.4.1\build\Eto.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eto.Forms.2.4.1\build\Eto.Forms.targets'))" />
-    <Error Condition="!Exists('..\packages\Eto.Forms.2.5.11\build\Eto.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eto.Forms.2.5.11\build\Eto.Forms.targets'))" />
   </Target>
-  <Import Project="..\packages\Eto.Forms.2.5.11\build\Eto.Forms.targets" Condition="Exists('..\packages\Eto.Forms.2.5.11\build\Eto.Forms.targets')" />
 </Project>
