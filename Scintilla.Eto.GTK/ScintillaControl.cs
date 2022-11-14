@@ -3,6 +3,7 @@ using Eto.Drawing;
 using Gdk;
 using System;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace Eto.Forms.Controls.Scintilla.GTK
 {
@@ -32,7 +33,7 @@ namespace Eto.Forms.Controls.Scintilla.GTK
             }
             set
             {
-                Console.WriteLine("Scintilla GTK Set Text");
+                Debug.WriteLine("Scintilla GTK Set Text");
                 SetParameter(Constants.SCI_SETTEXT, 0.ToIntPtr(), value.ToIntPtr());
             }
         }
@@ -42,11 +43,11 @@ namespace Eto.Forms.Controls.Scintilla.GTK
 
             editor = scintilla_new();
 
-            Console.WriteLine("Editor Created " + editor.ToString());
+            Debug.WriteLine("Editor Created " + editor.ToString());
 
             nativecontrol = new Gtk.Widget(editor);
 
-            Console.WriteLine("Managed Editor Created " + nativecontrol.Name);
+            Debug.WriteLine("Managed Editor Created " + nativecontrol.Name);
 
             SetStyle();
 
