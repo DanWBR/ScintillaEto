@@ -33,37 +33,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="atk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
-      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\atk-sharp.dll</HintPath>
+    <Reference Include="AtkSharp, Version=3.24.24.95, Culture=neutral, PublicKeyToken=f6892ebcc5dd81ba, processorArchitecture=MSIL">
+      <HintPath>..\packages\AtkSharp.3.24.24.95\lib\netstandard2.0\AtkSharp.dll</HintPath>
     </Reference>
-    <Reference Include="cairo-sharp, Version=1.12.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\cairo-sharp.dll</HintPath>
+    <Reference Include="CairoSharp, Version=3.24.24.95, Culture=neutral, PublicKeyToken=f6892ebcc5dd81ba, processorArchitecture=MSIL">
+      <HintPath>..\packages\CairoSharp.3.24.24.95\lib\netstandard2.0\CairoSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Eto">
-      <HintPath>..\..\dwsim\DWSIM\References\Eto.Forms\Release\net45\Eto.dll</HintPath>
+    <Reference Include="Eto, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eto.Forms.2.8.3\lib\netstandard2.0\Eto.dll</HintPath>
     </Reference>
-    <Reference Include="Eto.Gtk3">
-      <HintPath>..\..\dwsim\DWSIM\References\Eto.Forms\Release\net45\Eto.Gtk3.dll</HintPath>
+    <Reference Include="Eto.Gtk, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eto.Platform.Gtk.2.8.3\lib\netstandard2.0\Eto.Gtk.dll</HintPath>
     </Reference>
-    <Reference Include="gdk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
-      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\gdk-sharp.dll</HintPath>
+    <Reference Include="GdkSharp, Version=3.24.24.95, Culture=neutral, PublicKeyToken=f6892ebcc5dd81ba, processorArchitecture=MSIL">
+      <HintPath>..\packages\GdkSharp.3.24.24.95\lib\netstandard2.0\GdkSharp.dll</HintPath>
     </Reference>
-    <Reference Include="gio-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
-      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\gio-sharp.dll</HintPath>
+    <Reference Include="GioSharp, Version=3.24.24.95, Culture=neutral, PublicKeyToken=f6892ebcc5dd81ba, processorArchitecture=MSIL">
+      <HintPath>..\packages\GioSharp.3.24.24.95\lib\netstandard2.0\GioSharp.dll</HintPath>
     </Reference>
-    <Reference Include="glib-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
-      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\glib-sharp.dll</HintPath>
+    <Reference Include="GLibSharp, Version=3.24.24.95, Culture=neutral, PublicKeyToken=f6892ebcc5dd81ba, processorArchitecture=MSIL">
+      <HintPath>..\packages\GLibSharp.3.24.24.95\lib\netstandard2.0\GLibSharp.dll</HintPath>
     </Reference>
-    <Reference Include="gtk-dotnet, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
-      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\gtk-dotnet.dll</HintPath>
+    <Reference Include="GtkSharp, Version=3.24.24.95, Culture=neutral, PublicKeyToken=f6892ebcc5dd81ba, processorArchitecture=MSIL">
+      <HintPath>..\packages\GtkSharp.3.24.24.95\lib\netstandard2.0\GtkSharp.dll</HintPath>
     </Reference>
-    <Reference Include="gtk-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
-      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\gtk-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="pango-sharp, Version=3.0.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f, processorArchitecture=MSIL">
-      <HintPath>..\packages\gtk-sharp-3.3.22.6.4\lib\net40\pango-sharp.dll</HintPath>
+    <Reference Include="PangoSharp, Version=3.24.24.95, Culture=neutral, PublicKeyToken=f6892ebcc5dd81ba, processorArchitecture=MSIL">
+      <HintPath>..\packages\PangoSharp.3.24.24.95\lib\netstandard2.0\PangoSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -99,5 +100,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\gtk-sharp-3.3.22.6.4\build\net40\gtk-sharp-3.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\gtk-sharp-3.3.22.6.4\build\net40\gtk-sharp-3.targets'))" />
+    <Error Condition="!Exists('..\packages\GtkSharp.3.24.24.95\build\GtkSharp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GtkSharp.3.24.24.95\build\GtkSharp.targets'))" />
+    <Error Condition="!Exists('..\packages\Eto.Forms.2.8.3\build\Eto.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Eto.Forms.2.8.3\build\Eto.Forms.targets'))" />
   </Target>
+  <Import Project="..\packages\GtkSharp.3.24.24.95\build\GtkSharp.targets" Condition="Exists('..\packages\GtkSharp.3.24.24.95\build\GtkSharp.targets')" />
+  <Import Project="..\packages\Eto.Forms.2.8.3\build\Eto.Forms.targets" Condition="Exists('..\packages\Eto.Forms.2.8.3\build\Eto.Forms.targets')" />
 </Project>
